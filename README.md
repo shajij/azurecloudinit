@@ -12,7 +12,7 @@ Note: that your VM image should support cloud init scripts
 4. Lines 14-16 is for installing the required packages
 5. Lines 17-22 is for add an entry into daemon.json to tell docker that the docker home has changed to /data/docker (note: check if you need to have the docker folder created in advance)
 6. Lines 23-29 is restart docker service after daemon.json has been updated, adding user for docker, creating a mount to my nfs servers and enabling docker for start up.
-7. Line 30 is for adding my ssh keys for easy login
+7. Line 30-31 is for adding my ssh keys for easy login
 
 ## VM Scale sets
 
