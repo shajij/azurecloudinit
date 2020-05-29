@@ -16,4 +16,5 @@ Note: that your VM image should support cloud init scripts
 
 ## VM Scale sets
 
-I am using this cloud init script in a VM scale set so each time a new VM is scaled these configs are available to be with the newly provisioned machine.
+I am using this cloud init script in a VM scale set. Each time a new VM is scaled these configs applied to the newly scaled VM.
+
