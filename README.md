@@ -16,5 +16,26 @@ Note: that your VM image should support cloud init scripts
 
 ## VM Scale sets
 
-I am using this cloud init script in a VM scale set. Each time a new VM is scaled these configs applied to the newly scaled VM.
+I am using this cloud init script in a VM scale set. Each time a new VM is scaled these configs are applied to the newly scaled VM.
+
+## Example az create
+
+Below is an example of creating a VM using the az vm create command
+
+```
+az vm create \
+    --resource-group <myrg> \
+    --name <vmname> \
+    --image UbuntuLTS \
+    --location eastus \
+    --admin-username <username> \
+    --admin-password <password> \
+    --subnet "Existing Subnet" \
+    --size Standard_B2s \
+    --data-disk-sizes-gb 128 \
+    --public-ip-address "" \
+    --authentication-type all \
+    --custom-data yaml/cloud-init.yml
+    
+```
 
