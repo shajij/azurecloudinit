@@ -1,0 +1,33 @@
+#cloud-config
+package_upgrade: true
+disk_setup:
+  /dev/disk/azure/scsi1/lun0:
+    table_type: gpt
+    layout: True
+    overwrite: True
+fs_setup:
+  - device: /dev/disk/azure/scsi1/lun0
+    partition: 1
+    filesystem: ext4
+mounts:
+ - ["/dev/disk/azure/scsi1/lun0-part1", "/data", auto, "defaults,noexec,nofail"]
+packages:
+  - docker.io
+  - nfs-common
+write_files:
+  - content: |
+      {
+        "data-root": "/data/docker"
+      }
+    path: /etc/docker/daemon.json
+runcmd:
+  - service docker restart
+  - usermod -aG docker arcit
+  - mkdir -p /mnt/backups
+  - echo "10.0.x.x:/backups /mnt/backups nfs auto,sync,nofail,intr,tcp 0 0" >> /etc/fstab
+  - mount -a
+  - systemctl enable docker
+ssh_authorized_keys:
+  - ssh-rsa XXXXXXX
+
+
