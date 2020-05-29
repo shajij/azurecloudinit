@@ -18,7 +18,7 @@ Note: that your VM image should support cloud init scripts
 
 I am using this cloud init script in a VM scale set. Each time a new VM is scaled these configs are applied to the newly scaled VM.
 
-## Example az create
+## Example az vm create
 
 Below is an example of creating a VM using the az vm create command
 
